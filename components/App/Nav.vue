@@ -1,0 +1,14 @@
+<template>
+    <div class="sticky top-0 z-50 border-b border-slate-800 bg-gray-900 px-4">
+    <div class="max-w-screen-2xl mx-auto">
+        <div class="flex justify-between w-full">
+           <div class=" border-x border-slate-800 px-6 py-4"><img src="/images/logo.svg" class="h-7 md:h-10 w-auto" alt="logo"></div>
+
+           <div class="border-x-0 border-slate-800">
+        <UButton class="hidden md:block bg-pink-600 relative h-full px-8 text-white text-lg font-semibold">Enroll for Free</UButton>
+        </div>
+        </div>
+        
+    </div>
+    </div>
+</template>

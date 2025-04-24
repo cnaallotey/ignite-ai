@@ -14,7 +14,7 @@
     ogUrl: 'https://ignite-ai.thriveafrica.co',
     ogType: 'website',
     ogSiteName: 'Ignite AI',
-    themeColor: '#4285F4', // Replace with your brand color
+    themeColor: '#4285F4',
     viewport: 'width=device-width, initial-scale=1',
     robots: 'index, follow',
     charset: 'utf-8',

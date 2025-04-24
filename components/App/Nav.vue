@@ -5,7 +5,7 @@
            <div class=" border-x border-slate-800 px-6 py-4"><img src="/images/logo.svg" class="h-7 md:h-10 w-auto" alt="logo"></div>
 
            <div class="border-x-0 border-slate-800">
-        <UButton class="hidden md:block bg-pink-600 relative h-full px-8 text-white text-lg font-semibold">Enroll for Free</UButton>
+        <UButton to="/#courses" class="hidden md:inline-flex items-center justify-center bg-pink-600 relative h-full px-8 text-white text-lg font-semibold">Enroll for Free</UButton>
         </div>
         </div>
         

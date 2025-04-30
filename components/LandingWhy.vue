@@ -54,6 +54,9 @@ const content = [
           </div>
         </div>
       </div>
+      <div class="mx-auto pt-10">
+        <p class="font-medium text-2xl text-center">And Many more...</p>
+      </div>
     </div>
     <!-- End Icon Blocks -->
   </div>

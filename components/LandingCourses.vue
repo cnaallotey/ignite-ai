@@ -7,14 +7,14 @@ $fetch(`${config.public.API_URL}/ignite-courses`)
 </script>
 
 <template>
-  <section class="px-4" id="courses">
-   <div class="max-w-5xl mx-auto w-full border-x pt-20 border-slate-800">
-    <h2 class="text-3xl md:text-4xl text-white tracking-tight mx-5 md:mx-10 pb-5">
+  <section class="px-4 bg-white" id="courses">
+   <div class="max-w-5xl mx-auto w-full border-x text-slate-900 pt-20 bg-white border-slate-300">
+    <h2 class="text-3xl md:text-4xl text-slate-900 tracking-tight mx-5 md:mx-10 pb-5">
         Access 100% Tuition-Free, Standardized, and High-Quality Generative AI Courses
     </h2>
    </div>
-   <div class="border-y border-slate-800">
-    <div class="container max-w-5xl border-x border-slate-800 mx-auto">
+   <div class="border-y border-slate-300">
+    <div class="container max-w-5xl border-x border-slate-300 mx-auto">
 
       <div
         class="grid grid-cols-3 sm:grid-cols-6 lg:grid-cols-9 sm:px-8 xl:px-0"
@@ -22,7 +22,7 @@ $fetch(`${config.public.API_URL}/ignite-courses`)
         <div
           v-for="(item, index) in courses.items"
           :key="index"
-          class="relative flex border h-full border-slate-800 flex-col items-start col-span-3 px-4 py-4 space-y-4 overflow-hidden"
+          class="relative flex border h-full border-slate-300 flex-col items-start col-span-3 px-4 py-4 space-y-4 overflow-hidden"
           data-rounded="rounded-xl"
           data-rounded-max="rounded-full"
         >
@@ -51,16 +51,17 @@ $fetch(`${config.public.API_URL}/ignite-courses`)
           </span>
           <span>{{ item.duration || "TBA" }}</span>
         </div>
-          <h4 class="text-;g md:text-2xl font-medium text-white">{{ item.name }}</h4>
-          <p class="text-base text-white">
+          <h4 class="text-;g md:text-2xl font-medium text-gray-900">{{ item.name }}</h4>
+          <p class="text-base text-gray-500">
             {{item.description}}
           </p>
           <div class="flex-1 flex w-full items-end">
-            <NuxtLink external :to="`/course/${item.slug}`" class="bg-pink-600 z-10 text-sm font-bold w-full px-8 py-2 md:py-3 text-center text-white relative">Enroll Now</NuxtLink>
+            <NuxtLink external :to="`/course/${item.slug}`" class="bg-pink-600 z-10 text-sm font-bold w-full px-8 py-3 md:py-3 text-center text-white relative">Enroll Now</NuxtLink>
           </div>
         </div>
       </div>
     </div>
    </div>
+   <div class="max-w-5xl mx-auto w-full h-20 md:h-40 border-x border-gray-300"></div>
   </section>
 </template>

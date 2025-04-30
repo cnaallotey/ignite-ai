@@ -171,13 +171,9 @@ defineProps({
           </div>
           <div class="flex flex-col sm:flex-row sm:items-center gap-5">
             <div class="grid">
-            <p class="text-sm font-normal text-white">Just pay Admin Fee</p>
-            <h3 class="text-5xl font-semibold text-pink-600 mt-4">Gh₵ 150</h3>
-            <h3 class="text-2xl font-semibold text-pink-600/80 line-through">Ghc 5,000</h3>
+            <p class="text-5xl font-semibold text-pink-600 mt-4">70,000+</p>
+            <p class="text-lg font-semibold text-white">Students Trained</p>
           </div>
-         <div class="relative">
-            <NuxtLink external :to="`/course/register?id=${course.slug}`" class="bg-pink-600 text-lg px-8 py-4 md:py-6 font-medium text-white">Enroll For Free</NuxtLink>
-         </div>
           </div>
         </div>
         <div class="w-full min-h-40 md:aspect-square col-span-6 md:col-span-2">

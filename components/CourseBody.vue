@@ -1,10 +1,20 @@
 <template>
     <div>
-      <div class="w-full px-4">
+      <div class="w-full px-4 relative">
         <div
           class="max-w-6xl px-4 md:px-10 border-x border-slate-800 mx-auto z-10 flex flex-col gap-10 md:gap-14"
         >
-          <div class="lg:w-full mx-auto my-10 md:my-20 lg:max-w-auto lg:mx-0 flex flex-col gap-10 order-2">
+        <div class="flex flex-col justify-between sticky top-20 bg-black z-[1000] sm:flex-row sm:items-center gap-5 py-8 md:py-10 border-b border-slate-800">
+            <div class="grid">
+            <p class="text-sm font-normal text-white">Just pay Admin Fee</p>
+            <h3 class="text-3xl md:text-5xl font-semibold text-white mt-4">Gh₵ {{course.price}}</h3>
+            <h3 class="text-lg md:text-2xl font-semibold text-pink-600/80 line-through">Ghc 5,000</h3>
+          </div>
+         <div class="relative">
+            <NuxtLink external :to="`/course/register?id=${course.slug}`" class="bg-pink-600 text-base px-8 py-2 md:py-2 font-bold text-white">Enroll For Free</NuxtLink>
+         </div>
+          </div>
+          <div class="lg:w-full mx-auto mb-10 md:mb-20 lg:max-w-auto lg:mx-0 flex flex-col gap-10 order-2">
             <div v-if="splitpoints?.expectations" class="flex flex-col gap-2">
               <div class="text-pink-500 text-2xl font-semibold">What to Expect?</div>
       

@@ -39,7 +39,7 @@ const faq = {
 <div class="max-w-5xl py-10 lg:py-14 mx-auto border-x border-slate-800">
   <!-- Title -->
   <div class="max-w-2xl mx-auto mb-10 lg:mb-14">
-    <h2 class="text-3xl md:text-4xl px-4 md:px-0 md:leading-tight text-white">Frequently Asked Questions</h2>
+    <h2 class="text-3xl mx-auto text-center md:text-4xl px-4 md:px-0 md:leading-tight text-white">Frequently Asked Questions</h2>
   </div>
   <!-- End Title -->
 

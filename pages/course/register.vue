@@ -83,18 +83,20 @@ const submit = async () => {
             To download your admission letter directly, please click the button below:
           </p>
          <div class="grid gap-5 max-w-2xl mt-12 mx-auto">
-            <button
-            type="submit"
+            <NuxtLink
+            :to="course['letter-download-link']"
+            target="_blank"
             class="bg-pink-600 relative text-lg px-8 py-3 md:py-3 font-medium text-white"
           >
             Download Admission Letter
-          </button>
-          <button
-            type="submit"
+          </NuxtLink>
+          <NuxtLink
+          :to="course['brochure-download-link']"
+            target="_blank"
             class="bg-pink-600 relative text-lg px-8 py-3 md:py-3 font-medium text-white"
           >
             Download Course Brochure
-          </button>
+          </NuxtLink>
          </div>
         </div>
         <form v-else @submit.prevent="submit" class="grid gap-5">

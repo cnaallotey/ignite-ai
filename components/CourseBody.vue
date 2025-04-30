@@ -73,7 +73,7 @@
 
               <div class="bg-white/5 flex flex-col items-center p-10 mt-10">
               <div class="text-white text-lg md:text-2xl text-center font-semibold">Master the latest, essential technologies and tools</div>
-              <div class="flex flex-wrap justify-center gap-0 mt-6 items-baseline">
+              <div class="flex flex-wrap justify-center gap-5 mt-6 items-baseline">
                 <img v-for="item in course['tool-image']" :key="item.url" class="max-h-14 md:max-h-16 w-auto" :src="item.url" :alt="item.alt">  
               </div>
             </div>

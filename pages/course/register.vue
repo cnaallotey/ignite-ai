@@ -86,14 +86,14 @@ const submit = async () => {
             <NuxtLink
             :to="course['letter-download-link']"
             target="_blank"
-            class="bg-pink-600 relative text-lg px-8 py-3 md:py-3 font-medium text-white"
+            class="bg-pink-600 relative text-lg text-center px-8 py-3 md:py-3 font-medium text-white"
           >
             Download Admission Letter
           </NuxtLink>
           <NuxtLink
           :to="course['brochure-download-link']"
             target="_blank"
-            class="bg-pink-600 relative text-lg px-8 py-3 md:py-3 font-medium text-white"
+            class="bg-pink-600 relative text-center text-lg px-8 py-3 md:py-3 font-medium text-white"
           >
             Download Course Brochure
           </NuxtLink>

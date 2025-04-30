@@ -70,25 +70,25 @@
                   </svg> </span
                 ><span>{{ item }}</span>
               </p>
+
+              <div class="bg-white/5 flex flex-col items-center p-10 mt-10">
+              <div class="text-white text-lg md:text-2xl text-center font-semibold">Master the latest, essential technologies and tools</div>
+              <div class="flex flex-wrap justify-center gap-0 mt-6 items-baseline">
+                <img v-for="item in course['tool-image']" :key="item.url" class="max-h-14 md:max-h-16 w-auto" :src="item.url" :alt="item.alt">  
+              </div>
+            </div>
   
-              <p class="mt-5">Discover more about the course in our detailed brochure.</p>
+              <p class="mt-5 text-white md:text-lg">Discover more about the course in our detailed brochure.</p>
               <a
   
-              v-if="course.admissionopencampus"
-                :href="`/campus/courses/register?code=${course._id}`"
-                class="inline-flex justify-center rounded-lg border-2 border-pink-600 px-5 py-3 text-sm font-medium text-pink-500 hover:bg-pink-600 hover:text-white w-fit"
+              v-if="course.open"
+                :href="`/course/register?id=${course.slug}`"
+                class="inline-flex justify-center  border-2 border-pink-600 px-5 py-3 text-base font-bold text-pink-600 hover:bg-pink-600 hover:text-white w-fit"
               >
                 Checkout Course Brochure
               </a>
             </div>
-            <!-- <div class="flex flex-col gap-2">
-                          <div class="text-pink-500 text-2xl font-semibold">
-                              What you will learn.
-                          </div>
-                          <div v-html="course.objectives" class="criteria ml-6"></div>
-  
-                      </div> -->
-            <div class="p-6 rounded-2xl bg-pink-500/10 flex-col gap-2">
+            <div class="p-4 md:p-6 bg-pink-500/10 flex-col gap-2">
               <div class="text-pink-500 text-2xl font-semibold">
                 Go Beyond Learning – Build the Work Experience Required to Land Your First Job with Thrive Internships
               </div>

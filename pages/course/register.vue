@@ -2,6 +2,7 @@
 const { query } = useRoute();
 const loading = ref(false)
 const config = useRuntimeConfig()
+const success = ref(false)
 
 const userData = ref({})
 
@@ -34,14 +35,30 @@ const submit = async () => {
   
   
   try {
-    await $fetch(course.value.endpoint, {
+    const response = await $fetch(course.value.endpoint, {
       method: 'POST',
       body: {
         ...userData.value
       }
     });
+    success.value = true
+    if (response && userData.value.country === "Ghana") {
+      const sms = await $fetch("https://txtconnect.net/dev/api/sms/send", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer jXR4JAWebtIVgGupKv7kQNPrdm96hSyTzqDiY0nMC1a3wB2HEc",
+        },
+        body: {
+          to: userData.value.contact.trim(),
+          from: "IgniteAI",
+          unicode: 0,
+          sms: `Hello ${userData.value.name.split(" ")[0]}. ${course.value.sms}`,
+        },
+      });
+    }
   } catch (error) {
-    console.error('Error submitting course data:', error);
+    console.error('Error submitting user data:', error);
     throw error; // Re-throw or handle as needed
   } finally {
     loading.value = false
@@ -53,12 +70,21 @@ const submit = async () => {
   <div class="w-full">
     <div class="max-w-4xl mx-auto border-x border-slate-800 px-10">
       <h1 class="text-white pt-10 lg:pt-40 font-mendium text-3xl sm:text-5xl pb-5">
-        Register for {{ course?.name }}
+        {{success ? 'Thank you for registering':'Register'}} for {{ course?.name }}
       </h1>
     </div>
     <div class="border-y border-slate-800">
       <div class="max-w-4xl mx-auto border-x border-slate-800 p-10">
-        <form @submit.prevent="submit" class="grid gap-5">
+        <div v-if="success">
+            <p
+              class="text-xs mb-2 font-light text-gray-500 bg-slate-50 p-2 rounded-sm"
+            >
+              Please ensure whatsapp number is active. Thrive will contact you to provide
+              further information via whatsapp
+            </p>
+            
+        </div>
+        <form v-else @submit.prevent="submit" class="grid gap-5">
           <div class="">
             <label for="name" class="block text-sm font-medium mb-2 text-white"
               >Full name</label

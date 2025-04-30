@@ -2,7 +2,7 @@
 @import "tailwindcss";
 
 html {
-  @apply bg-gradient-to-b from-gray-900 to-slate-900;
+  @apply bg-black;
   font-family: "DM Sans", sans-serif;
   font-optical-sizing: auto;
   scroll-behavior: smooth;

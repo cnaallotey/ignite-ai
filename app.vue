@@ -28,7 +28,12 @@
       type: 'image/png', 
       href: '/favicon.png'  
     }
-  ]
+  ],
+  // script: [
+  //   {
+  //     src: `http://localhost:3001/iframe?affiliate=vueuse&type=top&closeable=true`,
+  //   },
+  // ],
 })
 </script>
 <template>

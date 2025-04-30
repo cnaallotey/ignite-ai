@@ -25,14 +25,14 @@
 
     <ul class="text-center">
       <li class="inline-block relative pe-8 last:pe-0 last-of-type:before:hidden before:absolute before:top-1/2 before:end-3 before:-translate-y-1/2 before:content-['/'] before:text-gray-300 dark:before:text-neutral-600">
-        <a class="inline-flex gap-x-2 text-sm text-white hover:text-gray-300 focus:outline-hidden focus:text-gray-800 dark:text-neutral-500 dark:hover:text-neutral-200 dark:focus:text-neutral-200" href="#">
+        <NuxtLink to="/#" class="inline-flex gap-x-2 text-sm text-white hover:text-gray-300 focus:outline-hidden focus:text-gray-800 dark:text-neutral-500 dark:hover:text-neutral-200 dark:focus:text-neutral-200" href="#">
           About
-        </a>
+        </NuxtLink>
       </li>
       <li class="inline-block relative pe-8 last:pe-0 last-of-type:before:hidden before:absolute before:top-1/2 before:end-3 before:-translate-y-1/2 before:content-['/'] before:text-gray-300 dark:before:text-neutral-600">
-        <a class="inline-flex gap-x-2 text-sm text-white hover:text-gray-300 focus:outline-hidden focus:text-gray-800 dark:text-neutral-500 dark:hover:text-neutral-200 dark:focus:text-neutral-200" href="#">
+        <NuxtLink to="/#courses" class="inline-flex gap-x-2 text-sm text-white hover:text-gray-300 focus:outline-hidden focus:text-gray-800 dark:text-neutral-500 dark:hover:text-neutral-200 dark:focus:text-neutral-200" href="#">
           Courses
-        </a>
+        </NuxtLink>
       </li>
     </ul>
     <!-- End Col -->

@@ -1,6 +1,8 @@
 <script setup>
+const config = useRuntimeConfig()
+
 const { data: courses } = await useAsyncData("courses", () =>
-  $fetch("https://webinar-api.eazzysocial.blog/thrive-courses")
+$fetch(`${config.public.API_URL}/ignite-courses`)
 );
 </script>
 
@@ -9,7 +11,7 @@ const { data: courses } = await useAsyncData("courses", () =>
    <div class="max-w-5xl mx-auto w-full border-x pt-20 border-slate-800">
     <h2 class="text-3xl md:text-4xl text-white tracking-tight mx-5 md:mx-10 pb-5">
         Access 100% Tuition-Free, Standardized, and High-Quality Generative AI Courses
-      </h2>
+    </h2>
    </div>
    <div class="border-y border-slate-800">
     <div class="container max-w-5xl border-x border-slate-800 mx-auto">

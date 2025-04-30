@@ -38,22 +38,20 @@ const content = [
   </div>
       <div class="grid sm:grid-cols-2 lg:grid-cols-2 items-center border-y divide  border-black/20">
         <!-- Card -->
-        <div v-for="item in content" :key="item.id" class="size-full bg-white p-6 md:p-10 ">
-          <div class="flex flex-col lg:flex-row items-start lg:items-end gap-x-4 mb-3">
-            <div
-              class=" justify-center overflow-hidden items-center w-60 shrink-0 aspect-square border-4 border-pink-200 bg-gray-100 dark:border-gray-900 dark:bg-gray-800"
-            >
-              <img :src="item.img" :alt="item.id" class="size-full object-center object-cover">
-            </div>
+        <div v-for="item in content" :key="item.id" class="size-full min-h-80 bg-cover bg-center "
+        :style="`background-image: url('${item.img}')`">
+          <div class="bg-black/50 h-full flex flex-col justify-end p-6 md:p-10">
+            <div class="flex flex-col lg:flex-row items-start lg:items-end gap-x-4 mb-3">
             <div class="">
-              <h3 class="block text-lg md:text-2xl font-semibold text-gray-800 dark:text-white">
+              <h3 class="block text-lg md:text-2xl font-semibold text-white">
                 {{ item.title }}
               </h3>
             </div>
           </div>
-          <p class="text-gray-600 dark:text-neutral-400">
+          <p class="text-white">
             {{ item.text }}
           </p>
+          </div>
         </div>
       </div>
     </div>

@@ -8,7 +8,7 @@ defineProps({
   <div class="w-full border-b border-slate-800">
     <div class="max-w-6xl mx-auto border-x border-slate-800">
       <div class="grid grid-cols-6">
-        <div class="w-full p-10 grid col-span-4">
+        <div class="w-full p-10 grid col-span-6 md:col-span-4">
           <p class="py-1 px-3 text-sm font-medium w-fit uppercase bg-pink-500/20 text-white">
             Admissions {{ course.open ? "Open" : "Closed" }}
           </p>
@@ -169,7 +169,7 @@ defineProps({
               <span>English</span>
             </div>
           </div>
-          <div class="flex items-center gap-5">
+          <div class="flex flex-col sm:flex-row sm:items-center gap-5">
             <div class="grid">
             <p class="text-sm font-normal text-white">Just pay Admin Fee</p>
             <h3 class="text-5xl font-semibold text-pink-600 mt-4">Gh₵ 150</h3>

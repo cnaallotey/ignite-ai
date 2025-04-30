@@ -8,7 +8,7 @@
             <div class="grid">
             <p class="text-sm font-normal text-white">Just pay Admin Fee</p>
             <h3 class="text-3xl md:text-5xl font-semibold text-white mt-4">Gh₵ {{course.price}}</h3>
-            <h3 class="text-lg md:text-2xl font-semibold text-pink-600/80 line-through">Ghc 5,000</h3>
+            <h3 class="text-lg md:text-2xl font-semibold text-pink-600/80 line-through">Ghc 30,000</h3>
           </div>
          <div class="relative">
             <NuxtLink external :to="`/course/register?id=${course.slug}`" class="bg-pink-600 text-base px-8 py-2 md:py-2 font-bold text-white">Enroll For Free</NuxtLink>

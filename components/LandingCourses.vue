@@ -56,7 +56,7 @@ $fetch(`${config.public.API_URL}/ignite-courses`)
             {{item.description}}
           </p>
           <div class="flex-1 flex w-full items-end">
-            <NuxtLink :to="`/course/${item.slug}`" class="bg-pink-600 z-10 text-sm font-bold w-full px-8 py-2 md:py-3 text-center text-white relative">Enroll Now</NuxtLink>
+            <NuxtLink external :to="`/course/${item.slug}`" class="bg-pink-600 z-10 text-sm font-bold w-full px-8 py-2 md:py-3 text-center text-white relative">Enroll Now</NuxtLink>
           </div>
         </div>
       </div>

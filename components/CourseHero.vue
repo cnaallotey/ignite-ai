@@ -176,7 +176,7 @@ defineProps({
             <h3 class="text-2xl font-semibold text-pink-600/80 line-through">Ghc 5,000</h3>
           </div>
          <div class="relative">
-            <NuxtLink :to="`/course/register?id=${course.slug}`" class="bg-pink-600 text-lg px-8 py-4 md:py-6 font-medium text-white">Enroll For Free</NuxtLink>
+            <NuxtLink external :to="`/course/register?id=${course.slug}`" class="bg-pink-600 text-lg px-8 py-4 md:py-6 font-medium text-white">Enroll For Free</NuxtLink>
          </div>
           </div>
         </div>

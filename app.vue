@@ -37,10 +37,10 @@
 })
 </script>
 <template>
-  <div>
+  <div class="h-screen flex flex-col">
     <NuxtRouteAnnouncer />
     <AppNav />
     <NuxtPage />
-    <AppFooter />
+    <AppFooter class="border-t border-slate-800" />
   </div>
 </template>

@@ -183,6 +183,7 @@ const submit = async () => {
               list="country-list"
               id="country-input"
               v-model="userData.country"
+              placeholder="Enter your country of residence"
               required
               class="py-2.5 sm:py-4 px-4 text-white block w-full border border-slate-800 sm:text-sm disabled:opacity-50 focus:outline-none disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
             />

@@ -85,7 +85,8 @@ const { $gsap } = useNuxtApp()
       duration: 0.4,
       repeat: 1,
       yoyo: true,
-      delay: 0.5
+      delay: 0.5,
+      opacity: 1
     })
     
     // Define hover animation functions

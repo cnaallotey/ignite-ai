@@ -15,7 +15,7 @@ const route = useRoute()
           v-if="route.path === '/'"
             to="/#courses"
             external
-            class="hidden md:inline-flex items-center justify-center bg-pink-600 relative h-fit py-3 px-8 text-white text-lg font-semibold"
+            class="hidden md:inline-flex items-center rounded-none justify-center bg-pink-600 relative h-fit py-3 px-8 text-white text-lg font-semibold"
             >Enroll for Free</UButton
           >
         </div>

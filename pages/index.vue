@@ -5,6 +5,7 @@
    <LandingWhy />
    <LandingSteps />
    <LandingApproach />
+   <LandingRoles />
    <LandingTeam />
    <AppPromo />
    <LandingTarget />

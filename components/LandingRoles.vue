@@ -1,4 +1,8 @@
 <script setup>
+import { useNuxtApp } from '#app'
+
+const { $gsap } = useNuxtApp()
+
 const roles = [
   {
     title: 'AI Prompt Engineer',
@@ -59,20 +63,96 @@ const roles = [
     </svg>`
   }
 ];
+
+// References for animation targets
+const heading = ref(null)
+const description = ref(null)
+const rolesGrid = ref(null)
+const cta = ref(null)
+
+// Animation sequence
+onMounted(() => {
+  // Create a timeline for sequenced animations
+  const tl = $gsap.timeline({ defaults: { ease: 'power3.out' } })
+  
+  // Animation sequence
+  tl.fromTo(heading.value,
+    { y: 30, opacity: 0 },
+    { y: 0, opacity: 1, duration: 1 }
+  )
+  .fromTo(description.value,
+    { y: 20, opacity: 0 },
+    { y: 0, opacity: 1, duration: 0.8 },
+    '-=0.4'
+  )
+  .fromTo(rolesGrid.value.children,
+    { 
+      y: 30, 
+      opacity: 0,
+      scale: 0.95
+    },
+    { 
+      y: 0, 
+      opacity: 1,
+      scale: 1,
+      stagger: 0.1,
+      duration: 0.8
+    },
+    '-=0.4'
+  )
+  .fromTo(cta.value,
+    { y: 20, opacity: 0, scale: 0.95 },
+    { 
+      y: 0, 
+      opacity: 1, 
+      scale: 1,
+      duration: 0.8,
+      boxShadow: '0 10px 25px -5px rgba(219, 39, 119, 0.4)',
+    },
+    '-=0.4'
+  )
+  .to(cta.value, {
+    y: -5,
+    boxShadow: '0 15px 30px -5px rgba(219, 39, 119, 0.5)',
+    duration: 0.4,
+    repeat: 1,
+    yoyo: true,
+    delay: 0.5,
+    opacity: 1
+  })
+})
+
+// Define hover animation functions
+const hoverIn = () => {
+  $gsap.to(cta.value, {
+    y: -5,
+    boxShadow: '0 15px 30px -5px rgba(219, 39, 119, 0.6)',
+    scale: 1.05,
+    duration: 0.3
+  })
+}
+
+const hoverOut = () => {
+  $gsap.to(cta.value, {
+    y: 0,
+    boxShadow: '0 10px 25px -5px rgba(219, 39, 119, 0.4)',
+    scale: 1,
+    duration: 0.3
+  })
+}
 </script>
 
 <template>
   <div class="w-full">
-    
     <div class="w-full border-y border-gray-800 px-4">
       <div class="max-w-5xl mx-auto w-full border-x border-gray-800">
         <div class="w-full h-full flex flex-col justify-center p-4 md:p-10">
-          <h2 class="text-3xl md:text-4xl text-left text-white tracking-tight pb-5">
+          <h2 ref="heading" class="text-3xl md:text-4xl text-left text-white tracking-tight pb-5 opacity-0">
             AI Job Roles You Can Pursue After This Program
           </h2>
-          <p class="text-white mb-8">Roles can be tailored to your specific industry or career path.</p>
+          <p ref="description" class="text-white mb-8 opacity-0">Roles can be tailored to your specific industry or career path.</p>
           
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div ref="rolesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             <div
               v-for="role in roles"
               :key="role.title"
@@ -82,6 +162,18 @@ const roles = [
               <h3 class="text-xl font-medium text-white mb-2">{{ role.title }}</h3>
               <p class="text-gray-400">{{ role.description }}</p>
             </div>
+          </div>
+
+          <div class="flex justify-center mt-12">
+            <NuxtLink 
+              ref="cta"
+              to="/#courses" 
+              class="bg-pink-600 z-10 text-lg px-8 py-3 md:py-3 font-bold text-white relative scale-95 opacity-0"
+              @mouseenter="hoverIn"
+              @mouseleave="hoverOut"
+            >
+              Start Your AI Career Journey
+            </NuxtLink>
           </div>
         </div>
       </div>

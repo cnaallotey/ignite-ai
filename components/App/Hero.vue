@@ -13,7 +13,7 @@
         <NuxtLink 
           ref="cta" 
           to="/#courses" 
-          class="bg-pink-600 z-10 text-lg px-8 py-3 md:py-3 font-bold text-white mt-10 relative opacity-0 scale-95"
+          class="bg-pink-600 z-10 text-lg px-8 py-3 md:py-3 font-bold text-white mt-10 relative scale-95"
           @mouseenter="hoverIn"
           @mouseleave="hoverOut"
         >
@@ -35,6 +35,25 @@ const { $gsap } = useNuxtApp()
   const highlight = ref(null)
   const description = ref(null)
   const cta = ref(null)
+  
+  // Define hover animation functions
+  const hoverIn = () => {
+    $gsap.to(cta.value, {
+      y: -5,
+      boxShadow: '0 15px 30px -5px rgba(219, 39, 119, 0.6)',
+      scale: 1.05,
+      duration: 0.3
+    })
+  }
+  
+  const hoverOut = () => {
+    $gsap.to(cta.value, {
+      y: 0,
+      boxShadow: '0 10px 25px -5px rgba(219, 39, 119, 0.4)',
+      scale: 1,
+      duration: 0.3
+    })
+  }
   
   // Animation sequence
   onMounted(() => {
@@ -85,27 +104,7 @@ const { $gsap } = useNuxtApp()
       duration: 0.4,
       repeat: 1,
       yoyo: true,
-      delay: 0.5,
-      opacity: 1
+      delay: 0.5
     })
-    
-    // Define hover animation functions
-    const hoverIn = () => {
-      $gsap.to(cta.value, {
-        y: -5,
-        boxShadow: '0 15px 30px -5px rgba(219, 39, 119, 0.6)',
-        scale: 1.05,
-        duration: 0.3
-      })
-    }
-    
-    const hoverOut = () => {
-      $gsap.to(cta.value, {
-        y: 0,
-        boxShadow: '0 10px 25px -5px rgba(219, 39, 119, 0.4)',
-        scale: 1,
-        duration: 0.3
-      })
-    }
-    })
+  })
   </script>

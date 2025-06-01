@@ -6,7 +6,7 @@ const route = useRoute()
   <div class="sticky top-0 z-50 border-b border-slate-800 bg-black px-4">
     <div class="max-w-screen-2xl mx-auto">
       <div class="flex justify-between items-center w-full">
-        <NuxtLink to="/#" class="border-x border-slate-800 px-6 py-4"
+        <NuxtLink external to="/#" class="border-x border-slate-800 px-6 py-4"
           ><img src="/images/top-logo.svg" class="h-10 md:h-16 w-auto" alt="logo"
         /></NuxtLink>
 

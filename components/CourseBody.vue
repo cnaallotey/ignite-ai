@@ -53,7 +53,7 @@
               <p class="text-white md:text-lg">{{ course.salary }}</p>
             </div>
             <div class="flex flex-col gap-2">
-              <div class="text-pink-500 text-2xl font-semibold xl:whitespace-nowrap">What you will learn ({{ course.studentobjectives?.split("|")[0] }})</div>
+              <div class="text-pink-500 text-2xl font-semibold xl:whitespace-nowrap">What you will learn</div>
               <p class="text-white md:text-lg inline-flex" v-for="item in course.studentobjectives?.split('|')" :key="item">
                 <span
                   ><svg

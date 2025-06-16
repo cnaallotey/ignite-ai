@@ -1,7 +1,14 @@
 <script setup>
 const config = useRuntimeConfig()
 
-const { data: courses } = await useFetch(`${config.public.API_URL}/ignite-courses`)
+const { data: courses, pending, error } = await useFetch(`${config.public.API_URL}/ignite-courses`, {
+  key: 'courses',
+  server: true,
+  lazy: false,
+  transform: (response) => {
+    return response || { items: [] }
+  }
+})
 </script>
 
 <template>
@@ -13,12 +20,19 @@ const { data: courses } = await useFetch(`${config.public.API_URL}/ignite-course
    </div>
    <div class="border-y border-slate-300">
     <div class="container max-w-5xl border-x border-slate-300 mx-auto">
+      <div v-if="pending" class="flex justify-center items-center min-h-[400px]">
+        <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-pink-600"></div>
+      </div>
+      
+      <div v-else-if="error" class="flex justify-center items-center min-h-[400px]">
+        <p class="text-red-500">Failed to load courses. Please try again later.</p>
+      </div>
 
-      <div
+      <div v-else
         class="grid grid-cols-3 sm:grid-cols-6 lg:grid-cols-9 sm:px-8 xl:px-0"
       >
         <div
-          v-for="(item, index) in courses.items"
+          v-for="(item, index) in courses?.items || []"
           :key="index"
           class="relative flex border h-full border-slate-300 flex-col items-start col-span-3 px-4 py-4 space-y-4 overflow-hidden"
           data-rounded="rounded-xl"

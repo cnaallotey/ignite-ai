@@ -79,14 +79,13 @@
             </div>
   
               <p class="mt-5 text-white md:text-lg">Discover more about the course in our detailed brochure.</p>
-              <a
-  
-              v-if="course.open"
-                :href="`/course/register?id=${course.slug}`"
-                class="inline-flex justify-center  border-2 border-pink-600 px-5 py-3 text-base font-bold text-pink-600 hover:bg-pink-600 hover:text-white w-fit"
+              <NuxtLink
+                v-if="course.open"
+                :to="`/course/register?id=${course.slug}`"
+                class="inline-flex justify-center border-2 border-pink-600 px-5 py-3 text-base font-bold text-pink-600 hover:bg-pink-600 hover:text-white w-fit"
               >
                 Checkout Course Brochure
-              </a>
+              </NuxtLink>
             </div>
             <div class="p-4 md:p-6 bg-pink-500/10 flex-col gap-2">
               <div class="text-pink-500 text-2xl font-semibold">
@@ -128,14 +127,14 @@
             <p class="text-2xl font-normal text-white">Just pay Admin Fee</p>
             <h3 class="text-5xl font-semibold text-pink-600 mt-4">Gh₵ 150</h3>
             <h3 class="text-2xl font-semibold text-pink-600/80 line-through">Ghc 5,000</h3>
-            <p class="text-2xl font-semibold text-white/80">or its equivalent in your country’s currency</p>
+            <p class="text-2xl font-semibold text-white/80">or its equivalent in your country's currency</p>
             <p class="text-sm leading-normal text-center text-gray-200 mt-4">
-              Read more about our administrative fees <span><a href="/administrative-fees" class="text-blue-500 hover:underline cursor-pointer" target="_blank" rel="noreferrer">here</a></span>.
+              Read more about our administrative fees <span><NuxtLink to="/administrative-fees" class="text-blue-500 hover:underline cursor-pointer" target="_blank" rel="noreferrer">here</NuxtLink></span>.
             </p>
            </div>
             <!-- <div class="p-2 bg-slate-50 rounded-md text-blue-500">100% tuition-free</div>
             <p class="text-sm leading-normal text-center text-gray-500">
-              Please note that we don’t charge school fees or tuition fees. We charge a mandatory monthly token of 70 cedis or 100cedis upfront fees for the entire 3 month duration of the course as administrative fees.
+              Please note that we don't charge school fees or tuition fees. We charge a mandatory monthly token of 70 cedis or 100cedis upfront fees for the entire 3 month duration of the course as administrative fees.
               Read more about our administrative fees <span><a href="/administrative-fees" class="text-blue-500 hover:underline cursor-pointer" target="_blank" rel="noreferrer">here</a></span>.
             </p> -->
             <a

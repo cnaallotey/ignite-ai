@@ -68,7 +68,7 @@ const { data: courses, pending, error } = await useFetch(`${config.public.API_UR
             {{item.description}}
           </p>
           <div class="flex-1 flex w-full items-end">
-            <NuxtLink external :to="`/course/${item.slug}`" class="bg-pink-600 z-10 text-sm font-bold w-full px-8 py-3 md:py-3 text-center text-white relative">Enroll Now</NuxtLink>
+            <NuxtLink external :to="`/course/${item.slug}`" class="bg-pink-600 z-10 text-sm font-bold w-full px-8 py-3 md:py-3 text-center text-white relative">View Course</NuxtLink>
           </div>
         </div>
       </div>

@@ -4,20 +4,46 @@ const loading = ref(false);
 const config = useRuntimeConfig();
 const success = ref(false);
 
-const userData = ref({});
+const userData = ref({
+  isStudent: null,
+  school: '',
+  isEmployed: null,
+  professionalBackground: ''
+});
 
 const { data: payload } = await useAsyncData("courses", async () => {
-  // Fetch data from both endpoints
-  const [localCourses, countriesData] = await Promise.all([
-    $fetch(`${config.public.API_URL}/ignite-courses`),
-    $fetch("http://api.first.org/data/v1/countries"),
-  ]);
+  try {
+    // Fetch data from both endpoints with caching
+    const [localCourses, countriesData] = await Promise.all([
+      $fetch(`${config.public.API_URL}/ignite-courses`, {
+        headers: {
+          'Cache-Control': 'max-age=300' // Cache for 5 minutes
+        }
+      }),
+      $fetch("http://api.first.org/data/v1/countries", {
+        headers: {
+          'Cache-Control': 'max-age=86400' // Cache for 24 hours
+        }
+      }),
+    ]);
 
-  // Return combined or processed data as needed
-  return {
-    localCourses,
-    countriesData,
-  };
+    return {
+      localCourses,
+      countriesData,
+    };
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    return {
+      localCourses: { items: [] },
+      countriesData: { data: [] }
+    };
+  }
+}, {
+  server: true,
+  lazy: false,
+  transform: (response) => {
+    return response || { localCourses: { items: [] }, countriesData: { data: [] } };
+  }
 });
 
 const course = computed(() => {
@@ -195,6 +221,95 @@ const submit = async () => {
               ></option>
             </datalist>
           </div>
+
+          <!-- Student Status -->
+          <div class="space-y-2">
+            <label class="block text-sm font-medium mb-2 text-white">Are you currently a student?</label>
+            <div class="flex gap-4">
+              <label class="inline-flex items-center">
+                <input
+                  type="radio"
+                  v-model="userData.isStudent"
+                  :value="true"
+                  class="form-radio text-pink-600"
+                  required
+                />
+                <span class="ml-2 text-white">Yes</span>
+              </label>
+              <label class="inline-flex items-center">
+                <input
+                  type="radio"
+                  v-model="userData.isStudent"
+                  :value="false"
+                  class="form-radio text-pink-600"
+                  required
+                />
+                <span class="ml-2 text-white">No</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- School Name (shown only if student) -->
+          <div v-if="userData.isStudent === true">
+            <label for="school" class="block text-sm font-medium mb-2 text-white">School Name</label>
+            <input
+              type="text"
+              id="school"
+              v-model="userData.school"
+              required
+              class="py-2.5 sm:py-4 px-4 text-white block w-full border border-slate-800 sm:text-sm focus:outline-none disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
+              placeholder="Enter your school name"
+            />
+          </div>
+
+          <!-- Employment Status -->
+          <div class="space-y-2">
+            <label class="block text-sm font-medium mb-2 text-white">Are you currently employed?</label>
+            <div class="flex gap-4">
+              <label class="inline-flex items-center">
+                <input
+                  type="radio"
+                  v-model="userData.isEmployed"
+                  :value="true"
+                  class="form-radio text-pink-600"
+                  required
+                />
+                <span class="ml-2 text-white">Yes</span>
+              </label>
+              <label class="inline-flex items-center">
+                <input
+                  type="radio"
+                  v-model="userData.isEmployed"
+                  :value="false"
+                  class="form-radio text-pink-600"
+                  required
+                />
+                <span class="ml-2 text-white">No</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Professional Background (shown only if employed) -->
+          <div v-if="userData.isEmployed === true">
+            <label for="professional-background" class="block text-sm font-medium mb-2 text-white">Professional Background</label>
+            <select
+              id="professional-background"
+              v-model="userData.professionalBackground"
+              required
+              class="py-2.5 sm:py-4 px-4 text-white block w-full border border-slate-800 sm:text-sm focus:outline-none disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
+            >
+              <option value="" disabled>Select your professional background</option>
+              <option value="technology">Technology/IT</option>
+              <option value="business">Business/Management</option>
+              <option value="healthcare">Healthcare</option>
+              <option value="education">Education</option>
+              <option value="finance">Finance</option>
+              <option value="marketing">Marketing</option>
+              <option value="engineering">Engineering</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
           <button
             type="submit"
             class="bg-pink-600 relative text-lg px-8 py-3 md:py-3 font-medium text-white"

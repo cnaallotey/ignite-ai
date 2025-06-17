@@ -37,7 +37,11 @@ const teamItems = ref([
           <img
             class="size-40"
             :src="`https://www.thriveafrica.co/images/team/${item.image}.jpeg`"
-            alt="Avatar"
+            :alt="`${item.name} - ${item.profession}`"
+            loading="lazy"
+            width="160"
+            height="160"
+            decoding="async"
           />
           <div class="grow">
             <h3 class="font-medium text-gray-900">{{ item.name }}</h3>

@@ -72,74 +72,77 @@ const cta = ref(null)
 
 // Animation sequence
 onMounted(() => {
-  // Create a timeline for sequenced animations
-  const tl = $gsap.timeline({ defaults: { ease: 'power3.out' } })
+  // Create a timeline for sequenced animations with performance optimizations
+  const tl = $gsap.timeline({ 
+    defaults: { 
+      ease: 'power3.out',
+      force3D: true,
+      willChange: 'transform, opacity'
+    } 
+  });
   
-  // Animation sequence
-  tl.fromTo(heading.value,
+  // Animation sequence with reduced complexity
+  tl.fromTo([heading.value, description.value],
     { y: 30, opacity: 0 },
-    { y: 0, opacity: 1, duration: 1 }
-  )
-  .fromTo(description.value,
-    { y: 20, opacity: 0 },
-    { y: 0, opacity: 1, duration: 0.8 },
-    '-=0.4'
+    { 
+      y: 0, 
+      opacity: 1, 
+      duration: 0.8,
+      stagger: 0.2
+    }
   )
   .fromTo(rolesGrid.value.children,
     { 
-      y: 30, 
-      opacity: 0,
-      scale: 0.95
+      y: 20, 
+      opacity: 0
     },
     { 
       y: 0, 
       opacity: 1,
-      scale: 1,
       stagger: 0.1,
-      duration: 0.8
+      duration: 0.6
     },
     '-=0.4'
   )
   .fromTo(cta.value,
-    { y: 20, opacity: 0, scale: 0.95 },
+    { y: 20, opacity: 0 },
     { 
       y: 0, 
       opacity: 1, 
-      scale: 1,
-      duration: 0.8,
+      duration: 0.6,
       boxShadow: '0 10px 25px -5px rgba(219, 39, 119, 0.4)',
     },
     '-=0.4'
-  )
-  .to(cta.value, {
-    y: -5,
-    boxShadow: '0 15px 30px -5px rgba(219, 39, 119, 0.5)',
-    duration: 0.4,
-    repeat: 1,
-    yoyo: true,
-    delay: 0.5,
-    opacity: 1
-  })
+  );
+
+  // Clean up animations when component is unmounted
+  onUnmounted(() => {
+    tl.kill();
+  });
 })
 
-// Define hover animation functions
+// Optimize hover animations
 const hoverIn = () => {
   $gsap.to(cta.value, {
     y: -5,
     boxShadow: '0 15px 30px -5px rgba(219, 39, 119, 0.6)',
     scale: 1.05,
-    duration: 0.3
-  })
-}
+    duration: 0.2,
+    force3D: true,
+    willChange: 'transform'
+  });
+};
 
 const hoverOut = () => {
   $gsap.to(cta.value, {
     y: 0,
     boxShadow: '0 10px 25px -5px rgba(219, 39, 119, 0.4)',
     scale: 1,
-    duration: 0.3
-  })
-}
+    duration: 0.2,
+    force3D: true,
+    willChange: 'transform'
+  });
+};
 </script>
 
 <template>

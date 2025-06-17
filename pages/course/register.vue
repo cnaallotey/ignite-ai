@@ -195,7 +195,6 @@ const submit = async () => {
                 class="text-sm w-full rounded-lg !border-slate-800"
               />
             </ClientOnly>
-            <pre class="text-white">{{ userData.whatsapp }}</pre>
             <p v-show="userData.whatsapp?.length" class="text-white/80 mt-2 text-sm">
               Please ensure Whatsapp number is active. The Thrive Team will contact you to
               provide further information via Whatsapp.
